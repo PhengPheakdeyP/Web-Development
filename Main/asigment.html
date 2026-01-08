@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Asigment</title>
+
+    <style>
+        /* ===== Global ===== */
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: linear-gradient(90deg, #eae6f8, #f7eaea);
+            color: #111;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #contact {
+
+            padding-bottom: 60px;
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 30px auto;
+            background: #fff;
+            padding: 12px;
+            padding-top: 12px;
+            border-radius: 999px;
+            display: flex;
+            gap: 8px;
+            width: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: #3c65b6;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-item.active {
+            background: #f3f4f6;
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            padding: 6px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 22px;
+        }
+
+        .subtitle strong {
+            font-style: italic;
+        }
+
+        .description {
+            font-size: 20px;
+            color: #383838;
+        }
+
+        .socials {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+
+        }
+
+        .socials a img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgb(163, 42, 42);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero {
+            min-height: auto;
+            padding: 160px 20px 120px;
+        }
+
+
+
+        /* ===== About Section ===== */
+        .about {
+            min-height: auto;
+
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            background: linear-gradient(90deg, #eae6f8, #f7eaea);
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .about-content img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* Section */
+        .projects {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .projects h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* Card */
+        .project-card {
+            display: flex;
+            gap: 40px;
+            background: #f3f4f6;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .project-card.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Text */
+        .project-content h2 {
+            margin: 0 0 15px;
+        }
+
+        .project-content p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Tags */
+        .tags {
+            margin-top: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #1f2933;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        /* Image */
+        .project-image img {
+            width: 420px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .project-card,
+            .project-card.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .project-image img {
+                width: 100%;
+            }
+        }
+
+        /* Section */
+        .skills-section {
+            max-width: 1000px;
+            margin: 100px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .skills-section h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        /* Skills container */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            /* wrap to next line */
+            justify-content: center;
+            /* center */
+            gap: 20px;
+        }
+
+        /* Skill pill */
+        .skill {
+            padding: 14px 22px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            font-size: 18px;
+            color: #111827;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        /* Hover effect */
+        .skill:hover {
+            background: #111827;
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        /* Section */
+        .experience {
+            max-width: 1100px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .experience h1 {
+            text-align: center;
+            margin-bottom: 80px;
+            font-size: 36px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        /* Center line */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #e5e7eb;
+            transform: translateX(-50%);
+        }
+
+        /* Item */
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        /* Left / Right */
+        .timeline-item.left {
+            flex-direction: row;
+        }
+
+        .timeline-item.right {
+            flex-direction: row-reverse;
+        }
+
+        /* Card */
+        .timeline-card {
+            width: 45%;
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-card h3 {
+            margin: 0 0 5px;
+        }
+
+        .timeline-card h4 {
+            margin: 0 0 15px;
+            font-weight: normal;
+            color: #6b7280;
+        }
+
+        .timeline-card p {
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        /* Date */
+        .timeline-date {
+            position: absolute;
+            top: -15px;
+            left: 60%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            padding: 6px 14px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .timeline-dates {
+            position: absolute;
+            top: -20px;
+            left: 40%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            padding: 6px 14px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        /* Icon */
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: -30px;
+            transform: translate(-50%, 0);
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border: 3px solid #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item.left,
+            .timeline-item.right {
+                flex-direction: column;
+                padding-left: 20px;
+            }
+
+            .timeline-card {
+                width: 100%;
+            }
+
+            .timeline-date,
+            .timeline-icon {
+                left: 20px;
+                transform: none;
+            }
+        }
+
+        .contact {
+            max-width: 700px;
+            margin: 120px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .contact h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+
+        .contact p a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            font-size: 16px;
+            outline: none;
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            margin-top: 10px;
+            align-self: flex-start;
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 120px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+    
+
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#experience" class="nav-item">Experience</a>
+        <a href="#contact" class="nav-item">Contact</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="avatar">
+            <img src="./imag/image.png" alt="Avatar" width="500" height="333">
+        </div>
+
+        <h1>សូមជម្រាបសួរ, ខ្ញុំឈ្មោះ <span>ភក្ដី</span></h1>
+
+        <p class="subtitle">
+            <strong>អ្នកអភិវឌ្ឍន៍កម្មវិធី</strong>, ខ្ញុំមានចំណង់ចំណូលចិត្តក្នុងការបង្កើតនឹងកែរលម្អរបន្ថែម។
+        </p>
+
+        <p class="description">
+            ខ្ញុំចូលចិត្តស្វែងយល់អំពីបច្ចេកវិទ្យាថ្មីៗ និងបង្កើតគម្រោងដែលមានប្រយោជន៍សម្រាប់មនុស្សជាច្រើន។
+        </p>
+
+        <div class="socials">
+            <a href="https://github.com/" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h1>និយាយអំពី ខ្ញុំ</h1>
+        <div class="about-content">
+            <img src="./imag/photo_2025-12-24 19.35.08.jpeg" alt="About me">
+            <p>
+                ខ្ញុំគឺជាសិស្សកំពង់សិក្សារៀនសូត្រផ្នែកព៍ត័មានវិជ្ជាវិឡាសាស្ដ្រ-កុំព្យូទ័រនៅសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។
+            </p>
+        </div>
+    </section>
+    <section class="projects" id="projects">
+        <h1>Projects</h1>
+        <!-- Project 1 -->
+        <div class="project-card">
+            <div class="project-content">
+                <h3>Asigment</h3>
+                <p>
+                    កិច្ចការសម្រាប់ការសិក្សាទៅលើការបង្កើត website HTML បញ្ចប់នៅឆមាសទី១ ឆ្នាំទី៣ ក្នុងឆ្នាំ២០២៥។
+                </p>
+
+                <div class="tags">
+                    <span class="tag">CSS</span>
+                    <span class="tag">NEXT.JS</span>
+                    <span class="tag">HTML</span>
+                </div>
+            </div>
+            <div class="project-image">
+                <img src="./imag/V.jpeg" alt="Project Image">
+            </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card reverse">
+            <div class="project-content">
+                <h2>ពេលទំនេនៅផ្ទះរបស់ខ្ញុំ</h2>
+                <p>
+                    សម្រាប់ការទំនេរបស់ខ្ញុំ​
+                    ខ្ញុំចូលចិត្តស្ដាប់តន្រ្តីអានសៀវភៅធ្វើកិច្ចការនឹងអនុវត្តការងារដែលមានមិនទាន់បានបញ្ចប់​
+                    មើលភាពយន្ត​ និងលេងហ្គេមម្នាក់ឯង។
+                </p>
+                <div class="tags">
+                    <span class="tag"></span>
+                    <span class="tag"></span>
+                </div>
+            </div>
+
+            <div class="project-image">
+                <img src="./imag/free time.webp" alt="Project Image">
+            </div>
+        </div>
+    </section>
+    <section class="skills-section" id="skills">
+        <h1>Skills</h1>
+        <div class="skills-list">
+            <!-- <div class="skill">Blockchain</div> -->
+            <div class="skill">C</div>
+            <div class="skill">C++</div>
+            <!-- <div class="skill">Tython</div> -->
+
+            <div class="skill">CSS</div>
+            <div class="skill">Docker</div>
+            <div class="skill">HTML</div>
+            <div class="skill">Java</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Next.js</div>
+            <div class="skill">PostgreSQL</div>
+
+        </div>
+    </section>
+    <section class="experience" id="experience">
+        <h1>បទពិសោធន៍ របស់ខ្ញុំ៖</h1>
+        <div class="timeline">
+            <!-- Item 1 -->
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <h3>និសិ្សត IT</h3>
+                    <h4>ឆ្នាំទីមួយនៅសាកលវិទ្យាល័យភូមិន្នភ្នំពេញ</h4>
+                    <p>
+                        ជាឆ្នាំដំបូងរបស់ខ្ញុំក្នុងការសិក្សាព៍ត័មានវិទ្យាសាស្រ្ត-កុំព្យូទ័រ
+                        ខ្ញុំបានស្វែងយល់ពីមូលដ្ឋាននៃការអភិវឌ្ឍន៍កម្មវិធី។
+                        បានរៀនភាសាកម្មវិធីដូចជា C, C++
+                        ដែលបានធ្វើឲ្យខ្ញុំមានមូលដ្ឋានដ៏រឹងមាំសម្រាប់ការអភិវឌ្ឍន៍កម្មវិធីនៅអនាគត។
+                    </p>
+                </div>
+
+                <div class="timeline-icon">💻</div>
+                <div class="timeline-date">Dec 2023 – Nov 2024</div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="timeline-item right">
+                <div class="timeline-card">
+                    <h3>និសិ្សត IT</h3>
+                    <h4>ឆ្នាំទីពីរនៅសាកលវិទ្យាល័យភូមិន្នភ្នំពេញ</h4>
+                    <p>
+                        ជាឆ្នាំទីពីររបស់ខ្ញុំក្នុងការសិក្សាព៍ត័មានវិទ្យាសាស្រ្ត-កុំព្យូទ័រ
+                        ខ្ញុំបានស្វែងយល់ពីមូលដ្ឋាននៃការអភិវឌ្ឍន៍កម្មវិធី។
+                        បានរៀនភាសាកម្មវិធីដូចជា Java, Algorithms
+                        ដែលបានធ្វើឲ្យខ្ញុំមានមូលដ្ឋានដ៏រឹងមាំសម្រាប់ការអភិវឌ្ឍន៍កម្មវិធីនៅអនាគត។
+                    </p>
+                </div>
+
+                <div class="timeline-icon">🛠️</div>
+                <div class="timeline-dates">Dec 2024 – Feb 2025</div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="timeline-item left">
+                <div class="timeline-card">
+                    <h3>និសិ្សត IT</h3>
+                    <h4>ឆ្នាំទីបីនៅសាកលវិទ្យាល័យភូមិន្នភ្នំពេញ</h4>
+                    <p>
+                        ជាឆ្នាំទីបីរបស់ខ្ញុំក្នុងការសិក្សាព៍ត័មានវិទ្យាសាស្រ្ត-កុំព្យូទ័រ
+                        ខ្ញុំបានស្វែងយល់ពីមូលដ្ឋាននៃការអភិវឌ្ឍន៍កម្មវិធី។
+                        បានរៀនភាសាកម្មវិធីដូចជា JavaScript, HTML, Node.js, CSS, .NET
+                        ដែលបានធ្វើឲ្យខ្ញុំមានមូលដ្ឋានដ៏រឹងមាំសម្រាប់ការអភិវឌ្ឍន៍កម្មវិធីនៅអនាគត។
+                    </p>
+                </div>
+
+                <div class="timeline-icon">🚀</div>
+                <div class="timeline-date">Mar 2025 – Present</div>
+            </div>
+
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h1>សម្រាប់ការទំនាក់ទំនង់មកខ្ញុំ</h1>
+        <p>
+            សូមទាក់ទងមកខ្ញុំតាមរយៈ
+            <a href="mailto:pheakdeypheng2000@gmail.com">pheakdeypheng2000@gmail.com</a>
+            ឬក៏សរសេរបែបបនៅខាងក្រោមនេះ។
+        </p>
+
+        <form>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <footer>
+            <p>© 2025 Pheng Pheakdey. All rights reserved.</p>
+            <p>វេពផ្សាយនេះសរសេរបង្កើតដោយ Pheng Pheakdey។ ជាមួយកម្មវិធី HTML,CSS</p>
+        </footer>
+
+
+    </section>
+
+</body>
+<script src="js/scripst.js"></script>
+
+</html>
